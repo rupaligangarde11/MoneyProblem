@@ -1,0 +1,44 @@
+<project name="JunitTest" default="test" basedir=".">
+   <property name="testdir" location="test" />
+   <property name="srcdir" location="src" />
+   <property name="full-compile" value="true" />
+   <path id="classpath.base"/>
+   <path id="classpath.test">
+      <pathelement location="lib/junit-4.9.jar" />
+      <pathelement location="build/jar/Account.jar"/>
+      <pathelement location="build/TestClasses"/>
+      <pathelement location="build/classes"/>
+   </path>
+
+    <target name="clean">
+        <delete dir="build"/>
+    </target>
+
+    <target name="compile">
+        <mkdir dir="build/classes"/>
+	<presetdef name="javac">
+		<javac includeantruntime='false'/>
+	</presetdef>
+        <javac srcdir="src" destdir="build/classes"/>
+	<mkdir dir="build/TestClasses"/>
+	<javac srcdir="test" destdir="build/TestClasses/">
+   		<classpath refid="classpath.test"/>
+	</javac>
+     </target>
+
+    <target name="jar">
+        <mkdir dir="build/jar"/>
+        <jar destfile="build/jar/Account.jar" basedir="build/classes">
+            <manifest>
+                <attribute name="Main-Class" value="Account"/>
+            </manifest>
+        </jar>
+    </target>
+   <target name="test" depends="compile">
+      <junit>
+         <classpath refid="classpath.test" />
+         <formatter type="brief" usefile="false" />
+         <test name="AccountTest" />
+      </junit>
+   </target>
+</project>
