@@ -28,9 +28,9 @@
 
     <target name="jar">
         <mkdir dir="build/jar"/>
-        <jar destfile="build/jar/Account.jar" basedir="build/classes">
+        <jar destfile="build/jar/Money.jar" basedir="build/classes">
             <manifest>
-                <attribute name="Main-Class" value="Account"/>
+                <attribute name="Main-Class" value="Money"/>
             </manifest>
         </jar>
     </target>

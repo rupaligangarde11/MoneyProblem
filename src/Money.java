@@ -17,11 +17,7 @@ public class Money {
         if (o == null || getClass() != o.getClass()) return false;
 
         Money that = (Money) o;
-//        if (that.paise > 100)
-//            return this.rupee * 100 + this.paise == that.paise;
-//        if (this.paise > 100)
-//            return that.rupee * 100 + that.paise == this.paise;
-//        return paise == that.paise;
+
         if((this.rupee==that.rupee)&&(this.paise==that.paise))
             return true;
         if(this.paise>100)
@@ -49,7 +45,7 @@ public class Money {
     }
 
     public Money subtractMoney(Money that) {
-        return new Money(Math.abs(this.rupee - that.rupee), Math.abs(this.paise - that.paise));
+        return new Money (this.rupee - that.rupee, this.paise - that.paise);
     }
 
 }
