@@ -25,10 +25,15 @@ public class MoneyTest {
     }
 
     @Test
+    public void shouldAdd1Rupee20PaiseAnd150PaiseToReturn1Rupee170Paise() {
+        Money money1 = new Money(1, 20);
+        Money money2 = new Money(0, 150);
+        assertEquals(new Money(1,170), money1.addMoney(money2));
+    }@Test
     public void shouldAdd1Rupee20PaiseAnd150PaiseToReturn2Rupee70Paise() {
         Money money1 = new Money(1, 20);
         Money money2 = new Money(0, 150);
-        assertEquals(new Money(2, 70), money1.addMoney(money2));
+        assertEquals(new Money(2,70), money1.addMoney(money2));
     }
 
 
@@ -43,6 +48,36 @@ public class MoneyTest {
     public void shouldAdd1Rupee60PaiseAnd2Rupee50PaiseToReturn4RupeeAnd10Paise() {
         Money moneyOne = new Money(1, 60);
         Money moneyTwo = new Money(2, 50);
-        assertEquals(new Money(4, 10), moneyOne.addMoney(moneyTwo));
+        assertEquals(new Money(3, 110), moneyOne.addMoney(moneyTwo));
     }
+
+    @Test
+    public void shouldSubtract50PaiseFrom200PaiseAndReturn150Paise() {
+        Money moneyOne = new Money(0,50);
+        Money MoneyTwo = new Money(0,200);
+        assertEquals(new Money(0,150),moneyOne.subtractMoney(MoneyTwo));
+
+    }
+
+    @Test
+    public void shouldSubtract50RupeesFrom200RupeesAndReturn150Rupees() {
+        Money moneyOne = new Money(10,0);
+        Money MoneyTwo = new Money(200,0);
+        assertEquals(new Money(190,0),moneyOne.subtractMoney(MoneyTwo));
+    }
+
+    @Test
+    public void shouldSubtract40Rupee30PaiseFrom120Rupee60PaiseAndReturn80RupeeAnd30Paise() {
+        Money moneyOne = new Money(40,30);
+        Money moneyTwo = new Money(120,60);
+        assertEquals(new Money(80,30),moneyOne.subtractMoney(moneyTwo));
+    }
+
+    @Test
+    public void shouldSubtract100Rupee50PaiseFrom40Rupees90PaiseAndReturn60RupeeAnd40Paise() {
+        Money moneyOne = new Money(40,90);
+        Money moneyTwo = new Money(100,50);
+        assertEquals(new Money(60,40),moneyOne.subtractMoney(moneyTwo));
+    }
+
 }
